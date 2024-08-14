@@ -1,0 +1,24 @@
+body{
+    background-image: url('/images/29660.jpg');
+    background-size: cover;  
+    background-attachment: fixed;  
+    background-position: center; 
+    color: white; 
+  }
+
+.mainTitle {
+  background-color: #5c422c;
+  color: #DDBC92;
+}
+
+a {
+  color: #DDBC92;
+}
+
+footer{
+  color: #DDBC92;
+}
+
+#basic-addon1{
+  background-color: #DDBC92;
+}

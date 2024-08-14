@@ -1,0 +1,71 @@
+<%- include('partials/header.ejs'); -%>
+
+<div class="mainTitle col-lg-3 col-md-4 mx-auto container-lg m-5 p-3 text-center bg-gradient rounded">
+    <h1>Byron Hayes</h1>
+    <h3>Books I've Read</h3>
+</div>
+
+<!-- Form for adding new books -->
+ <div class="container-lg col-lg-3 col-md-4 mx-auto">
+    <form action="/new" method="post">
+        
+        <div class="mb-3 text-center">
+            
+            <input type="text" class="form-control" id="isbn" name="isbn" placeholder="Enter ISBN number to add a book">
+        </div>
+        <div class="mb-3 text-center">   
+            <button type="submit" class="btn btn-success">Add Book</button>
+        </div> 
+    </form>
+</div>
+
+
+<!-- Form for sorting books -->
+ <div class="container text-center mt-5">
+    <form action="/sort" method="post">
+        <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Sort By:
+            </button>
+            <ul class="dropdown-menu">
+            <li><input type="submit" class="dropdown-item" name="author" value="Author"></li>
+            <li><input type="submit" class="dropdown-item" name="title" value="Title"></li>
+            <li><input type="submit" class="dropdown-item" name="rating" value="Rating"></li>
+            <li><input type="submit" class="dropdown-item" name="date" value="Date Read"></li>
+            </ul>
+        </div>
+    </form>
+</div>
+
+
+<!-- Display books -->
+
+<% books.forEach(book => { %>
+    <div class="mainTitle col-lg-8 col-md-8 col-sm-11 mx-auto container-lg mt-3 mb-5 p-5 text-center bg-gradient rounded">
+        <a href="/book/<%= book.id %>">
+            <h1><%= book.title %> - By <%= book.author %></h1>
+        </a>
+        <p>Date Read: <%= book.readdate %></p>
+        <p>Book rating <%= book.rating %>/10</p>
+        <p><%= book.description %></p>
+        <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" />
+        <form action="/edit" method="post">
+            <button type="submit" class="btn btn-secondary" name="editId" value="<%= book.id %>">Edit</button>
+        </form>
+        <form action="/delete" method="post">
+            <button type="submit" class="btn btn-danger" name="deleteId" value="<%= book.id %>">Delete</button>
+        </form>
+        
+    </div>  
+<%  });%>
+
+
+
+
+
+
+
+
+
+
+<%- include('partials/footer.ejs'); -%>

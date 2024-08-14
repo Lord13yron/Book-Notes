@@ -1,0 +1,41 @@
+<%- include('partials/header.ejs'); -%>
+
+<div class="container-lg m-5 p-3 col-lg-4 col-md-5 col-sm-8 mx-auto text-center mainTitle">
+    <h1>Edit Book Below</h1>
+</div>
+
+<div class="mainTitle col-lg-8 col-md-8 col-sm-11 mx-auto container-lg mt-3 mb-5 p-5 text-center bg-gradient rounded">
+    <a href="/book/<%= book.id %>">
+        <h1><%= book.title %> - By <%= book.author %></h1>
+    </a>
+    <img class="mt-4" src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" />
+    <form action="/edit" method="post">
+        <input type="number" class="d-none" name="id" value="<%=book.id %>">
+        <div class="mb-3 mt-4">
+            <label for="title" class="form-label">Book Title</label>
+            <input type="text" class="form-control" id="title" name="title" value="<%= book.title %>">
+        </div>
+        <div class="mb-3">
+            <label for="author" class="form-label">Author</label>
+            <input type="text" class="form-control" id="author" name="author" value="<%= book.author %>">
+        </div>
+        <div class="mb-3">
+            <label for="isbn" class="form-label">ISBN Number</label>
+            <input type="text" class="form-control" id="isbn" name="isbn" value="<%= book.isbn %>">
+        </div>
+        <div class="mb-3">
+            <label for="rating" class="form-label">Your Rating for the Book</label>
+            <input type="text" class="form-control" id="rating" name="rating" value="<%= book.rating %>">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3"><%= book.description %></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+
+
+
+<%- include('partials/footer.ejs'); -%>

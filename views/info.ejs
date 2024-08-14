@@ -1,0 +1,30 @@
+<%- include('partials/header.ejs'); -%>
+
+<div class="container-lg m-5 p-3 col-lg-4 col-md-5 col-sm-8 mx-auto text-center mainTitle">
+    <h1>Submit Book to Database</h1>
+</div>
+
+<div class="mainTitle col-lg-8 col-md-8 col-sm-11 mx-auto container-lg mt-3 mb-5 p-5 text-center bg-gradient rounded">
+    <h1><%= title %> - By <%= author %></h1>
+    <img src="https://covers.openlibrary.org/b/isbn/<%= isbn %>-M.jpg" />
+    <form action="/add" method="post">
+        <input type="text" class="form-control d-none" id="title" name="title" value="<%= title %>">
+        <input type="text" class="form-control d-none" id="author" name="author" value="<%= author %>">
+        <input type="text" class="form-control d-none" id="isbn" name="isbn" value="<%= isbn %>">
+        <div class="mb-3">
+            <label for="rating" class="form-label">Your Rating for the Book</label>
+            <input type="text" class="form-control" id="rating" name="rating" placeholder="Rating">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter a description for the book"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>  
+
+
+
+
+
+<%- include('partials/footer.ejs'); -%>

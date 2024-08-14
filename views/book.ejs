@@ -1,0 +1,27 @@
+<%- include('partials/header.ejs'); -%>
+
+<div class="container-lg m-5 p-3 col-lg-4 col-md-5 col-sm-8 mx-auto text-center mainTitle">
+    <h1>Byron Hayes</h1>
+    <h3>Books I've Read</h3>
+</div>
+
+<div class="mainTitle col-lg-8 col-md-8 col-sm-11 mx-auto container-lg mt-3 mb-5 p-5 text-center bg-gradient rounded">
+    
+    <h1><%= book.title %> - By <%= book.author %></h1>
+    <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" />
+    <p>Date Read: <%= book.readdate %></p>
+    <p>Book rating <%= book.rating %>/10</p>
+    <p><%= book.description %></p>
+    <%= book.isbn %>
+    <form action="/edit" method="post">
+        <button type="submit" class="btn btn-secondary" name="editId" value="<%= book.id %>">Edit</button>
+    </form>
+    <form action="/delete" method="post">
+        <button type="submit" class="btn btn-danger" name="deleteId" value="<%= book.id %>">Delete</button>
+    </form>
+    
+</div>  
+
+
+
+<%- include('partials/footer.ejs'); -%>
