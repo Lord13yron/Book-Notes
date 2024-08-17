@@ -87,9 +87,15 @@ app.post("/new", async (req,res) =>{
       author: author,
     });
   
-  } catch (error) {
-      console.log(error)
-      res.status(404).send(error.response);
+  } catch (err) {
+      console.log(err)
+      const result = await db.query("SELECT * FROM books ORDER BY id DESC");
+      res.render("index.ejs", {
+        books: result.rows,
+        error: "ISBN not found. Enter only digits no hyphens(-) or try another ISBN"
+      });
+      
+      // res.status(404).send(error.response);
     }
 });
 
@@ -99,16 +105,15 @@ app.post("/edit", async (req,res) =>{
       [req.body.editId]
     );
     res.render("edit.ejs", {book: result.rows[0]});
-  } else if (req.body.id && req.body.title && req.body.author && req.body.rating && req.body.description && req.body.isbn){
+  } else if (req.body.id && req.body.title && req.body.author && req.body.rating && req.body.description){
     const title = req.body.title;
     const author = req.body.author;
     const rating = req.body.rating;
     const description = req.body.description;
-    const isbn = req.body.isbn;
     const id = req.body.id;
     await db.query(
-      "UPDATE books SET title = $1, author = $2, rating = $3, description = $4, isbn = $5 WHERE id = $6;",
-      [title, author, rating, description, isbn, id]
+      "UPDATE books SET title = $1, author = $2, rating = $3, description = $4 WHERE id = $5;",
+      [title, author, rating, description, id]
     );
     
     res.redirect(`/book/${id}`);

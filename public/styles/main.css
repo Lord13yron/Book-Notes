@@ -22,3 +22,11 @@ footer{
 #basic-addon1{
   background-color: #DDBC92;
 }
+
+.home-link{
+  color: white;
+}
+
+.home-link:hover {
+  color: #DDBC92
+}

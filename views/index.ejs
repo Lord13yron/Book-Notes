@@ -1,9 +1,14 @@
 <%- include('partials/header.ejs'); -%>
 
-<div class="mainTitle col-lg-3 col-md-4 mx-auto container-lg m-5 p-3 text-center bg-gradient rounded">
-    <h1>Byron Hayes</h1>
-    <h3>Books I've Read</h3>
-</div>
+
+<%  if (locals.error){ %>
+    <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+        <strong>Error!</strong> <%= error %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+<% } %>
+
+
 
 <!-- Form for adding new books -->
  <div class="container-lg col-lg-3 col-md-4 mx-auto">

@@ -19,13 +19,10 @@
             <label for="author" class="form-label">Author</label>
             <input type="text" class="form-control" id="author" name="author" value="<%= book.author %>">
         </div>
-        <div class="mb-3">
-            <label for="isbn" class="form-label">ISBN Number</label>
-            <input type="text" class="form-control" id="isbn" name="isbn" value="<%= book.isbn %>">
-        </div>
+
         <div class="mb-3">
             <label for="rating" class="form-label">Your Rating for the Book</label>
-            <input type="text" class="form-control" id="rating" name="rating" value="<%= book.rating %>">
+            <input type="number" min="0" max="10" class="form-control" id="rating" name="rating" value="<%= book.rating %>">
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
